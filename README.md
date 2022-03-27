@@ -6,7 +6,7 @@ This Python-based script interfaces with [CloudFlare's client API](https://api.c
 ### Installation
 Installation is fairly straightforward. Note that you should install the script on the server whose external IP you want reflected in your domains' DNS records. It is assumed that the server has a Python interpreter already installed.
 ```bash
-git clone https://github.com/LINKIWI/cloudflare-ddns-client.git
+git clone https://github.com/codysnow/cloudflare-ddns-client.git
 cd cloudflare-ddns-client
 sudo make install
 ```
@@ -28,18 +28,19 @@ You may rerun this at any time with cloudflare-ddns --configure
 Quit and cancel at any time with Ctrl-C
 
 Enter the email address associated with your CloudFlare account.
-Example: developer@kevinlin.info
+Example: codysnow@protonmail.com
 Email: YOUR_EMAIL_HERE
 
 Enter the API key associated with your CloudFlare account. You can find your API key at https://www.cloudflare.com/a/account/my-account
 Example: 7d9dfl2fid74lsg50saa9j2dbqm67zn39v673
 CloudFlare API key: YOUR_API_KEY_HERE
 
+Current domains: kevinlin.info,cloudflaremanager.com
 Enter the domains for which you would like to automatically update the DNS records, delimited by a single comma.
 Example: kevinlin.info,cloudflaremanager.com
 Comma-delimited domains: YOUR_DOMAINS_HERE
 
-Configuration file written to /home/kiwi/.cloudflare-ddns successfully.
+Configuration file written to ~/.cloudflare-ddns successfully.
 ```
 After configuration, you should verify that the script works before continuing:
 ```bash
