@@ -126,10 +126,25 @@ def initialize_configuration():
                 config.remove_option('Cloudflare DDNS', 'api_token')
     else:
         raise RuntimeError("Invalid auth type provided!")
-    domains = input('Enter the domains for which you would like to automatically update the DNS records, '
-                    'delimited by a single comma.\nExample: kevinlin.info,cloudflaremanager.com\n'
-                    'Comma-delimited domains: ')
-    config['Cloudflare DDNS']['domains'] = domains
+    existing_domains = config['Cloudflare DDNS']['domains'].replace(" ", "").split(',')
+
+    new_domains = input('Enter the domains for which you would like to automatically update the DNS records, '
+                        'delimited by a single comma.\nExample: kevinlin.info,cloudflaremanager.com\n'
+                        'Comma-delimited domains: ').replace(" ", "").split(',')
+
+    print("Current domains: " + ", ".join(existing_domains))
+
+    for nd in new_domains:
+        tmp = 0
+        for ed in existing_domains:
+            if nd == ed:
+                tmp = 1
+                break
+        if tmp == 0:
+            existing_domains.append(nd)
+
+    
+    config['Cloudflare DDNS']['domains'] =  ", ".join(existing_domains)
     with open(CONFIGURATION_FILE, 'w') as config_file:
         config.write(config_file)
     os.chmod(CONFIGURATION_FILE, stat.S_IREAD | stat.S_IWRITE)
