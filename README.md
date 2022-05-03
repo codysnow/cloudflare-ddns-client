@@ -10,6 +10,11 @@ git clone https://github.com/codysnow/cloudflare-ddns-client.git
 cd cloudflare-ddns-client
 sudo make install
 ```
+If you receive an error when running 'sudo make install' run the following:
+
+```bash
+python3 -m pip install -r requirements.txt
+```
 This will install necessary Python libraries and place a copy of the `cloudflare-ddns` executable in `/usr/local/bin`. You can verify access to the executable with `which cloudflare-ddns`.
 
 ### Configuration
